@@ -6,9 +6,8 @@
     "extends": [
         "plugin:react/recommended",
         "google",
-        "plugin:prettier/recommended",
-        "prettier/@typescript-eslint",
-        "prettier/react"
+        "plugin:prettier/recommended"
+   
     ],
     "parser": "@typescript-eslint/parser",
     "parserOptions": {
@@ -23,8 +22,6 @@
         "@typescript-eslint"
     ],
     "rules": {
-        "semi": ["error", "always"],
-        "quotes": ["error", "double"],
         "no-unused-vars":"warn"
     }
 }

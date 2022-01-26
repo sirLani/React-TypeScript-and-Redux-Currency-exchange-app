@@ -3,7 +3,7 @@ export interface RateType {
 }
 
 export interface FxData {
-   base: string | null;
+   base: string;
    disclaimer: string | null;
    license: string;
    rates: RateType;
