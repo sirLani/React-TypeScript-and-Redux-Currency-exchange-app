@@ -6,7 +6,6 @@ import { Base, Option, Selectoption } from "../../components/form/style/form"
 import { useGetFxDataQuery } from "../../services/getFx/getFx"
 import { BoldText, RegularText } from "../../components/texts/style/text"
 import conversionMath from "../../utils/conversionMath"
-import getSelectedOption from "../../utils/getSelectedOption"
 
 interface IForm {
   baseAmount: string | undefined
@@ -56,7 +55,7 @@ export const ExchangeScreen: React.FC = () => {
   const quoteValue = form.quoteRate
   const baseValue = form.baseRate
 
-  /* This handles the onchange function in the base input */
+  /* This handles the onchange function in the  input */
 
   const handleBaseAmount = (e: ChangeEvent<HTMLInputElement>) => {
     const value = e.target.value
@@ -113,12 +112,13 @@ export const ExchangeScreen: React.FC = () => {
   const handleQuoteCurrency = (e: ChangeEvent<HTMLSelectElement>) => {
     e.preventDefault()
     const value = e.target.value
-    const currency = getSelectedOption(e)
+
+    const rate = data?.rates[value]
 
     setForm((prev) => ({
       ...prev,
-      quoteCurrency: currency,
-      quoteRate: Number(value),
+      quoteCurrency: value,
+      quoteRate: Number(rate),
     }))
     if (!quoteValue || !baseValue || !form.quoteAmount) {
       return

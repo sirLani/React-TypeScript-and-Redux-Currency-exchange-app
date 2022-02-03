@@ -47,7 +47,6 @@ it("converts from AED to AFN correctly", async () => {
   fireEvent.change(baseInput, { target: { value: 300 } })
 
   const quoteInput = screen.findByLabelText("Buy")
-  screen.logTestingPlaygroundURL()
   expect((await quoteInput).textContent).toEqual("")
 })
 
