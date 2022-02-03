@@ -1,4 +1,4 @@
 export interface ICard {
-   justifyContent?: string;
-   width?: string;
+  justifyContent?: string
+  width?: string
 }
