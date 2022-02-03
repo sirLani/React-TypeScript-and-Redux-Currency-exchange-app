@@ -1,5 +1,6 @@
 export interface iFormBaseProps {
-  // children?: undefined;
+  onSubmit: (e: React.FormEvent<HTMLFormElement>) => void
+  method?: string
 }
 
 export interface iInputProps {
@@ -15,6 +16,10 @@ export interface iInputProps {
   value?: string
   name?: string
   step?: string
+  dataTest?: string
+  htmlFor?: string
+  labelText?: string
+  id?: string
 }
 
 export interface iInputGroupProp {

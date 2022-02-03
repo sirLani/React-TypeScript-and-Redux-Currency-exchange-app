@@ -1,4 +1,4 @@
-import React from 'react'
+import React from "react"
 import {
   Base,
   InputGroup,
@@ -6,11 +6,11 @@ import {
   InputContainer,
   ErrorContainer,
   Error,
-} from './style/form'
-import { iFormBaseProps, iInputProps } from './interface'
+} from "./style/form"
+import { iFormBaseProps, iInputProps } from "./interface"
 
-export const Form: React.FC<iFormBaseProps> = ({ children }) => {
-  return <Base>{children}</Base>
+export const Form: React.FC<iFormBaseProps> = ({ children, onSubmit }) => {
+  return <Base onSubmit={(e) => onSubmit(e)}>{children}</Base>
 }
 
 export const FormInput: React.FC<iInputProps> = ({
@@ -26,29 +26,37 @@ export const FormInput: React.FC<iInputProps> = ({
   value,
   name,
   step,
+  dataTest,
+  htmlFor,
+  labelText,
+  id,
   ...restProps
 }) => {
   return (
-    <InputContainer>
-      <InputGroup>
-        {leftComponent}
-
-        <Input
-          placeholder={placeholder}
-          onChange={(e: any) => onChange(e)}
-          width={width}
-          textAlign={textAlign}
-          type={type}
-          value={value}
-          name={name}
-          step={step}
-          {...restProps}
-        />
-        {rightComponent}
-      </InputGroup>
-      <ErrorContainer>
-        <Error>{error}</Error>
-      </ErrorContainer>
-    </InputContainer>
+    <>
+      <InputContainer>
+        <label htmlFor={htmlFor}>{labelText}</label>
+        <InputGroup>
+          {leftComponent}
+          <Input
+            data-test="input-box"
+            placeholder={placeholder}
+            onChange={(e: any) => onChange(e)}
+            width={width}
+            textAlign={textAlign}
+            type={type}
+            value={value}
+            name={name}
+            id={id}
+            step={step}
+            {...restProps}
+          />
+          {rightComponent}
+        </InputGroup>
+        <ErrorContainer>
+          <Error>{error}</Error>
+        </ErrorContainer>
+      </InputContainer>
+    </>
   )
 }
